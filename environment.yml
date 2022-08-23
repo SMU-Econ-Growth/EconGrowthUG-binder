@@ -782,3 +782,4 @@ dependencies:
     - ruamel-yaml-clib==0.2.6
     - traittypes==0.2.1
     - uritemplate==4.1.1
+    - nbgitpuller
