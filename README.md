@@ -1,4 +1,4 @@
-# Binder fo EconGrowthUG Environment
+# Binder for EconGrowthUG Environment
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SMU-Econ-Growth/EconGrowthUG-binder/HEAD)
 
 This repository is used mainly for back-up, emergencies, and speed-up of the Binder construction.
