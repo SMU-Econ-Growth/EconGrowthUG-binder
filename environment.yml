@@ -88,6 +88,7 @@ dependencies:
   - plotnine
   - html5lib
   - pip
+  - rise
   - pip:
     - abc-classroom==0.1.9
     - geonamescache==1.5.0
