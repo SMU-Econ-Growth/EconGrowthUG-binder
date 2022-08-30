@@ -44,7 +44,6 @@ dependencies:
   - statsmodels
   - nltk
   - r-pacman
-  - jupyter_contrib_nbextensions
   - jupyter_nbextensions_configurator
   - pandas
   - r-rgdal
@@ -92,8 +91,11 @@ dependencies:
     - abc-classroom==0.1.9
     - geonamescache==1.5.0
     - github3-py==3.2.0
-    - git+https://github.com/ozak/google-drive-downloader.git
-    - git+https://github.com/ozak/camelot.git
+    - RISE
+    - git+https://github.com/ozak/google-drive-downloader
+    - git+https://github.com/ozak/camelot
+    - jupyter_contrib_nbextensions
+    - stargazer
     - jupyterlab-imarkdown==0.2.0
     - jupyterlab-markup-expr==0.1.1
     - keplergl==0.3.2
