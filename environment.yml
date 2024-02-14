@@ -1,7 +1,7 @@
 name: EconGrowthUG
 channels:
   - conda-forge
-  - mro
+  #- mro
   - r
   - defaults
 dependencies:
