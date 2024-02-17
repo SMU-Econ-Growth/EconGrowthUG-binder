@@ -3,13 +3,13 @@ channels:
   - conda-forge
   #- mro
   - r
-  - defaults
+  #- defaults
 dependencies:
   - r-base
   - r-dplyr
   - r-fields
   - r-tibble
-  - python=3.9
+  - python=3.10
   - plotly
   - r-classint
   - r-magick
@@ -30,7 +30,7 @@ dependencies:
   - r-fixest
   - r-ggplot2
   - stata_kernel
-  - jupyterlab=3.4.4
+  - jupyterlab#=3.4.4
   - georasters
   - r-broom
   - r-haven
@@ -88,20 +88,24 @@ dependencies:
   - html5lib
   - pip
   - pip:
-    - abc-classroom==0.1.9
-    - geonamescache==1.5.0
-    - github3-py==3.2.0
+    #- abc-classroom==0.1.9
+    - geonamescache#==1.5.0
+    - github3-py#==3.2.0
     - RISE
     - git+https://github.com/ozak/google-drive-downloader
     - git+https://github.com/ozak/camelot
     - jupyter_contrib_nbextensions
     - stargazer
-    - jupyterlab-imarkdown==0.2.0
-    - jupyterlab-markup-expr==0.1.1
-    - keplergl==0.3.2
-    - pyjwt==2.4.0
-    - ruamel-yaml==0.17.21
-    - ruamel-yaml-clib==0.2.6
-    - traittypes==0.2.1
-    - uritemplate==4.1.1
+    #- jupyterlab-imarkdown==0.2.0
+    - jupyterlab-markup-expr#==0.1.1
+    - keplergl#==0.3.2
+    - pyjwt#==2.4.0
+    - ruamel-yaml#==0.17.21
+    - ruamel-yaml-clib#==0.2.6
+    - traittypes#==0.2.1
+    - uritemplate#==4.1.1
     - nbgitpuller
+    - rdrobust 
+    - pyfixest 
+    - lets-plot 
+    - jupyterlab_myst
