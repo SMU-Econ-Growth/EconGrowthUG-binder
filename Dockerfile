@@ -51,6 +51,7 @@ RUN mamba install -y -c conda-forge -c r --override-channels \
     opencv \
     pandas \
     pandas-datareader \
+    platformdirs \
     plotnine \
     pycountry \
     scikit-image \
