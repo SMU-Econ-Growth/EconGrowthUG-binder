@@ -82,9 +82,10 @@ RUN python -m pip install --no-cache-dir --no-deps \
     git+https://github.com/ozak/google-drive-downloader
 
 # Pip packages WITH dependency resolution (important for wbdata)
-RUN python -m pip install --no-cache-dir --upgrade --upgrade-strategy eager \
-    wbdata \
- && python -m pip check
+RUN python -m pip install --no-cache-dir --upgrade --upgrade-strategy eager wbdata && \
+    python -m pip show wbdata && \
+    python -m pip list && \
+    python -m pip check || true
 
 # Verify plotly + kaleido + wbdata
 RUN python - <<EOF
