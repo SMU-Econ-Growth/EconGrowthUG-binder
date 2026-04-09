@@ -4,22 +4,23 @@
 # Create docker for EconGrowthUG for use on Deeepnote
 FROM condaforge/miniforge3
 
-# System dependencies
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PROJ_LIB=/opt/conda/share/proj
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ghostscript \
  && rm -rf /var/lib/apt/lists/*
 
-ENV PROJ_LIB=/opt/conda/share/proj
-WORKDIR /work
+RUN conda install -y -c conda-forge --override-channels mamba \
+ && conda clean -afy
 
-# Install mamba
-RUN conda install -y -c conda-forge mamba && conda clean -afy
-
-# Install conda packages (with version constraints for plotly/kaleido)
 RUN mamba install -y -c conda-forge -c r --override-channels \
     python=3.11 \
     pip \
+    "plotly<6.1.1" \
+    "python-kaleido<1" \
+    "esda<2.9" \
     camelot-py \
     dask-geopandas \
     geocoder \
@@ -35,9 +36,11 @@ RUN mamba install -y -c conda-forge -c r --override-channels \
     ipython \
     ipywidgets \
     jinja2 \
+    jupyter \
     jupyterlab \
     kiwisolver \
     matplotlib \
+    matplotlib-base \
     nb_conda_kernels \
     networkx \
     nltk \
@@ -48,8 +51,6 @@ RUN mamba install -y -c conda-forge -c r --override-channels \
     opencv \
     pandas \
     pandas-datareader \
-    "plotly<6.1.1" \
-    "python-kaleido<1" \
     plotnine \
     pycountry \
     scikit-image \
@@ -69,8 +70,7 @@ RUN mamba install -y -c conda-forge -c r --override-channels \
     rpy2 \
  && conda clean -afy
 
-# Pip packages WITHOUT dependency resolution
-RUN python -m pip install --no-cache-dir --no-deps \
+RUN python -m pip install --no-cache-dir \
     geonamescache \
     stargazer \
     dbnomics \
@@ -79,15 +79,17 @@ RUN python -m pip install --no-cache-dir --no-deps \
     lets-plot \
     RISE \
     jupyterlab-rise \
+    palettable \
+    pypng \
+    tenacity \
+    formulaic \
+    maketables \
+    jupyterlab-mathjax3 \
+    "pdfminer-six>=20240706" \
     git+https://github.com/ozak/google-drive-downloader
 
-# Pip packages WITH dependency resolution (important for wbdata)
-RUN python -m pip install --no-cache-dir --upgrade --upgrade-strategy eager wbdata && \
-    python -m pip show wbdata && \
-    python -m pip list && \
-    python -m pip check || true
+RUN python -m pip install --no-cache-dir --upgrade --upgrade-strategy eager wbdata
 
-# Verify plotly + kaleido + wbdata
 RUN python - <<EOF
 import plotly
 import kaleido
@@ -97,7 +99,10 @@ print("kaleido:", kaleido.__version__)
 print("wbdata OK")
 EOF
 
-# Clone notebooks (last for caching)
+RUN python -m pip check || true
+
+WORKDIR /work
+
 RUN git clone https://github.com/SMU-Econ-Growth/EconGrowthUG-Notebooks.git .
 
 EXPOSE 9000
