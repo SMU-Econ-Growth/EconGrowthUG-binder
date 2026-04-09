@@ -109,3 +109,4 @@ dependencies:
     - pyfixest 
     - lets-plot 
     - jupyterlab_myst
+    - wbdata
