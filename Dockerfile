@@ -49,8 +49,8 @@ RUN mamba install -y -c conda-forge -c r --override-channels \
     numpy \
     openpyxl \
     opencv \
-    pandas \
-    pandas-datareader \
+    "pandas<3" \
+    "pandas-datareader==0.10.0" \
     platformdirs \
     plotnine \
     pycountry \
